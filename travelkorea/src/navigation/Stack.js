@@ -17,7 +17,8 @@ export default () => {
           fontSize: 12,
           justifyContent: 'center'
         },
-        headerTintColor: 'white'
+        headerTintColor: 'white',
+        headerTitle:""
       }}
     >
       <Stack.Screen 

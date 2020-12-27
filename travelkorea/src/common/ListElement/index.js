@@ -28,15 +28,15 @@ const MuslimImageContainer = styled.View`
   left: 10px; */
 `;
 const MuslimImage = styled.Image`
-  width: 60px;
-  height: 60px;
+  width: 55px;
+  height: 55px;
   margin: auto auto;
+  margin-left: 15px;
 `;
 const ImageContainer = styled.View`
-  width: 40px;
+  width: 50px;
   height: ${HEIGHT*0.1}px;
-  /* position: absolute;
-  right: 10px; */
+  margin-right: 10px;
 `;
 const Image = styled.Image`
   width: 40px;
@@ -50,13 +50,12 @@ const Information = styled.Text`
   font-size: 10px;
 `;
 const TextContainer = styled.View`
-  width: ${WIDTH*0.57}px;
-  height: ${HEIGHT*0.1}px;
+  width: ${WIDTH*0.52}px;
   margin: auto auto;
+  padding-left: 10px;
 `;
 
 const ListElement = ({ cur }) => {
-  console.log(cur);
   const navigation = useNavigation();
   const goToDetail = () => {
     navigation.navigate('Detailed',{ cur });
@@ -72,18 +71,19 @@ const ListElement = ({ cur }) => {
         
         <TextContainer>
         <Title>{cur.title}</Title>
+        {/* <Title>{cur.title<22? cur.title : cur.title.slice(0,19) }</Title> */}
         <Information>
           {`${cur.address}\n☎ ${cur.telephone}`}
         </Information>
         </TextContainer>
 
-        <ImageContainer>
         <TouchableOpacity onPress={goToDetail}>
+        <ImageContainer>
         <Image 
           source={ require('../../../assets/icon/information.png') }
         />
-        </TouchableOpacity>
         </ImageContainer>
+        </TouchableOpacity>
         </List>
       </Wrapper>
     );

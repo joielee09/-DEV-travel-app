@@ -45,7 +45,8 @@ const Detailed = ({
         summary,
         telephone,
         title,
-        utility
+        utility,
+        images
       }
     }
   }
@@ -58,10 +59,9 @@ const Detailed = ({
             autoplay={true}
             showsPagination={false}
           >
-            <Image source={{ uri:'https://www.coex.co.kr/blog/coex-reference/2500?reference_action=download&idx=2501' }} />
-            <Image source={{ uri:'https://image.chosun.com/sitedata/image/201707/10/2017071001894_0.jpg' }} />
-            <Image source={{ uri:'https://www.coex.co.kr/blog/coex-reference/726?reference_action=download&idx=727' }} />
-            <Image source={{ uri:'https://www.econovill.com/news/photo/202008/410103_342660_255.jpg' }} />
+            {images.map(cur=>
+              <Image source={{ uri:cur }} />
+            )}
           </Swiper>
           </Container>
           <InformationContainer>
