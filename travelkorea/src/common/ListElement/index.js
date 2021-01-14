@@ -26,17 +26,19 @@ const MuslimImageContainer = styled.View`
   background-color: lightpink;
   position: absolute;
   left: 10px; */
+  /* background-color:lightblue; */
 `;
 const MuslimImage = styled.Image`
-  width: 55px;
-  height: 55px;
+  width: 50px;
+  height: 50px;
   margin: auto auto;
-  margin-left: 15px;
+  margin-left: 8px;
 `;
 const ImageContainer = styled.View`
   width: 50px;
   height: ${HEIGHT*0.1}px;
   margin-right: 10px;
+  /* background-color:lightblue; */
 `;
 const Image = styled.Image`
   width: 40px;
@@ -51,8 +53,9 @@ const Information = styled.Text`
 `;
 const TextContainer = styled.View`
   width: ${WIDTH*0.52}px;
-  margin: auto auto;
+  margin: 0px;
   padding-left: 10px;
+  /* background-color:lightpink; */
 `;
 
 const ListElement = ({ cur }) => {
