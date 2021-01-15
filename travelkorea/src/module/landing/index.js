@@ -33,7 +33,6 @@ const Image = styled.Image`
   margin: auto;
   box-shadow: 5px 5px 5px black;
 `;
-
 const Landing = () => {
     return(
         <Wrapper>
@@ -87,5 +86,4 @@ const Landing = () => {
         </Wrapper>
     );
 }
-
 export default Landing;

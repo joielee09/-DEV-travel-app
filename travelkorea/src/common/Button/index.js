@@ -15,9 +15,10 @@ const WhiteSpace = styled.View`
 `;
 
 const ButtonElement = ({ cur }) => {
+  // console.log("cur in button: ", cur);
   const navigation = useNavigation();
-  const goToRouter = () => {
-    if(cur.id===1)  navigation.navigate('Map',{});
+  const goToRouter = (cur) => {
+    navigation.navigate('Map',{ cur });
   }
 
     return(
@@ -36,7 +37,7 @@ const ButtonElement = ({ cur }) => {
             color: 'black',
             fontSize: 11
           }}
-          onPress={()=>goToRouter()}
+          onPress={()=>goToRouter(cur)}
         />
         <WhiteSpace />
       </Wrapper>

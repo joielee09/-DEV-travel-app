@@ -18,14 +18,24 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.joielee.travelkorea"
+      "bundleIdentifier": "com.joielee.travelkorea",
+      "buildNumber": "1.0.0",
+      "infoPlist": {},
+      "config": {}
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.joielee.travelkorea"
+      "package": "com.joielee.travelkorea",
+      "permissions": [],
+      "versionCode": 1,
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDaIk20xtQy3l4CngUxOXkf7QLzfFw1rc0"
+        }
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"

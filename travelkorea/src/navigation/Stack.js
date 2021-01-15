@@ -1,8 +1,8 @@
 import React from 'react';
 import { createStackNavigator } from "@react-navigation/stack";
-import Landing from '../module/landing'
-import Map from '../module/prayerplace/map'
-import Detailed from '../module/prayerplace/detailed';
+import Landing from '../module/landing';
+import Map from '../common/map'
+import Detailed from '../common/detailed';
 
 const Stack = createStackNavigator();
 

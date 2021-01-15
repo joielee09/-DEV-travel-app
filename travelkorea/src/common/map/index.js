@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import styled from "styled-components/native";
 import { Dimensions, Text } from "react-native";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
-import ListElement from "../../../common/ListElement";
+import ListElement from "../../common/ListElement";
 import MapView, { Marker } from 'react-native-maps';
-import { prayer_place } from '../../../../API';
-import  { randomColor } from '../../../common/utility';
+import * as API from '../../../API';
+import {prayer_place} from '../../../API';
+import {randomColor} from '../utility';
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
@@ -36,7 +37,28 @@ const List = styled.View`
 const Element = styled.View`
 `;
 const MapComponent = ( cur ) => {
-  console.log("cur: ", cur.route.params.cur.id);
+  const api_number = cur.route.params.cur.id;
+  // console.log("api: ", API);
+
+  if (api_number===1) {
+    api = API.prayer_place;
+  }
+  else if (api_number===2) {
+    api = API.halal_restaurant;
+  }
+  else if (api_number===3) {
+    api = API.coffee_place;
+  }
+  else if (api_number===4) {
+    api = API.touristic_location;
+  }
+  else if (api_number===5) {
+    api = API.shop_location;
+  }
+  else {
+    api = API.hotel_location;
+  }
+
   const mapWidth = WIDTH;
     const mapHeight = HEIGHT*0.52;
     const [location, setLocation] = useState({
@@ -49,8 +71,8 @@ const MapComponent = ( cur ) => {
       mapView.current.animateToRegion({ // Takes a region object as parameter
         latitude: latitude,
       longitude: longitude,
-        latitudeDelta: 0.05,
-        longitudeDelta: 0.05,
+        latitudeDelta: 0.02,
+        longitudeDelta: 0.02,
       },1000);
     }
     
@@ -66,7 +88,7 @@ const MapComponent = ( cur ) => {
     return(
         <Wrapper>
           <MapContainer>
-          {/* <MapView
+          <MapView
           style={{flex: 1}}
           initialRegion={{
             latitude: 37.565666,
@@ -78,7 +100,7 @@ const MapComponent = ( cur ) => {
           ref={mapView}
           // onPress={()=>console.log("map pressed")}
           >
-            {prayer_place.map(cur=>(
+            {api.map(cur=>(
               <Marker
                 coordinate={{ latitude: cur.position[0], longitude: cur.position[1] }}
                 title={cur.title}
@@ -87,21 +109,21 @@ const MapComponent = ( cur ) => {
                 pinColor={randomColor()}
               />
             ))}
-          </MapView> */}
+          </MapView>
           </MapContainer>
           {/* <TouchableOpacity onPress={animateMap2}><Text>Start</Text></TouchableOpacity> */}
 
           <ListContainer>
             <List>
             <ScrollView>
-              {prayer_place.map(cur=>
+              {api.map(cur=>
               <Element
                 key={cur.id+1000}
               >
               <TouchableOpacity onPress={()=>{
-                // console.log(cur.position);
-                // animateMap(cur.position[0], cur.position[1]);
-                // setLocation(cur.position);
+                console.log(cur.position);
+                animateMap(cur.position[0], cur.position[1]);
+                setLocation(cur.position);
               }} >
                 <ListElement
                   key={cur.id}

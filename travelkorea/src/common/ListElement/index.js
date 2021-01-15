@@ -73,10 +73,10 @@ const ListElement = ({ cur }) => {
         </MuslimImageContainer>
         
         <TextContainer>
-        <Title>{cur.title}</Title>
+        <Title>{cur.place_name}</Title>
         {/* <Title>{cur.title<22? cur.title : cur.title.slice(0,19) }</Title> */}
         <Information>
-          {`${cur.address}\n☎ ${cur.telephone}`}
+          {`${cur.address}\n ☎ ${cur.telephone}`}
         </Information>
         </TextContainer>
 
