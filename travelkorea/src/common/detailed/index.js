@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components/native";
-import { Dimensions } from "react-native";
+import { Dimensions, Text } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import Swiper from "react-native-swiper";
+import * as Linking from 'expo-linking';
+import { Pressable } from "react-native";
 
 const WIDTH = Dimensions.get('screen').width;
 const HEIGHT = Dimensions.get('screen').height;
@@ -26,7 +28,12 @@ const Title = styled.Text`
   font-size: 30px;
   font-weight: bold;
 `;
-const Text = styled.Text``;
+const PressableComponent = styled.View`
+  display: inline-block;
+`;
+const PressableText = styled.Text`
+  text-decoration: underline;
+`;
 const BoldText = styled.Text`
   font-weight: bold;
   font-size: 18px;
@@ -51,6 +58,14 @@ const Detailed = ({
     }
   }
 }) => {
+  const openHomepage = function (cur) {
+    if(cur==='')  return;
+    Linking.openURL(cur);
+  };
+  const openTelephone = function (telephone) {
+    if(telephone==='')  return;
+    Linking.openURL(`tel://${telephone}`)
+  }
     return(
         <ScrollView>
         <Wrapper>
@@ -60,7 +75,10 @@ const Detailed = ({
             showsPagination={false}
           >
             {images.map(cur=>
-              <Image source={{ uri:cur }} />
+              <Image
+                key={images.map(cur=>images.indexOf(cur))}
+                source={{ uri:cur }} 
+              />
             )}
           </Swiper>
           </Container>
@@ -70,8 +88,13 @@ const Detailed = ({
             <BoldText>Address</BoldText>
             <Text>{address}</Text>
             <Text/>
+            <Pressable 
+              onPress={()=>openTelephone(telephone)}
+              android_ripple={{color: '#72AFD3'}}
+            >
             <BoldText>Telephone</BoldText>
-            <Text>{telephone}</Text>
+            <PressableText>{telephone}</PressableText>
+            </Pressable>
             <Text/>
             <BoldText>Available_time</BoldText>
             <Text>{available_time}</Text>
@@ -82,8 +105,13 @@ const Detailed = ({
             <BoldText>Utility</BoldText>
             <Text>{utility}</Text>
             <Text/>
+            <Pressable 
+              onPress={()=>openHomepage(homepage)}
+              android_ripple={{color: '#72AFD3'}}
+            >
             <BoldText>Homepage</BoldText>
-            <Text>{homepage}</Text>
+            <PressableText>{homepage}</PressableText>
+            </Pressable>
             <Text/>
             <BoldText>Description</BoldText>
             <Text>{summary}</Text>
